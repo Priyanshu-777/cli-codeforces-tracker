@@ -41,9 +41,7 @@ def get_user_submissions(handle):
 
 
 def header():
-    print("="*90)
     print(pyfiglet.figlet_format("Codeforces Tracker"))
-    print("="*90)
 
 def line():
     print("="*90)   
@@ -51,10 +49,9 @@ def line():
 
 
 def main():
-    #line()
+    line()
     header()
-    #line()
-
+    line()
 
     handle= input("\nEnter codeforce handle: ")
     
