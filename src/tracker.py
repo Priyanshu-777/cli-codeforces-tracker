@@ -1,6 +1,8 @@
 import requests
 import json
 
+import pyfiglet
+
 
 def get_user_info(handle):
     url = f"https://codeforces.com/api/user.info?handles={handle}"
@@ -10,12 +12,12 @@ def get_user_info(handle):
     
     user_info=response["result"][0]
 
-    print(f"Handle: {user_info['handle']}")
+    print(f"\nHandle: {user_info['handle']}")
     print(f"Avatar: {user_info['titlePhoto']}")
     print(f"Rank: {user_info.get('rank', 'N/A')}")                           ## (print if ,else print)
     print(f"Rating: {user_info.get('rating', 'Unrated')}")
     print(f"Max Rating: {user_info.get("maxRating", "Unrated")}")  
-    print(f"Contribution: {user_info["contribution"]}")  
+    print(f"Contribution: {user_info["contribution"]}\n")  
                    
     
 
@@ -34,18 +36,32 @@ def get_user_submissions(handle):
 
             solved.add(solved_problem_id)
 
-    print(f"Number of problem solved: {len(solved)}\n")
+    print(f"Total Problem Solved: {len(solved)}\n")
 
 
 
 def header():
-    print(f'\n########################## Codeforces Tracker ##########################\n')
+    print("="*90)
+    print(pyfiglet.figlet_format("Codeforces Tracker"))
+    print("="*90)
+
+def line():
+    print("="*90)   
+
+
 
 def main():
-    handle= input("Enter codeforce handle: ")
+    #line()
     header()
+    #line()
+
+
+    handle= input("\nEnter codeforce handle: ")
+    
     get_user_info(handle)
     get_user_submissions(handle)
+
+    line()
 
 
 
