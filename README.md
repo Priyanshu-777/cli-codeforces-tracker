@@ -8,19 +8,16 @@ Unlike web dashboards, this tool is designed for developers who prefer **termina
 ## 📌 Features
 
 * 🔍 Fetches **Codeforces user details**
-
-  * Handle
+  * Handle 
   * Avatar URL
   * Rank
   * Current Rating
   * Maximum Rating
   * Contribution score
 
-* ✅ Calculates **total number of unique problems solved**
+* ✅ Calculates **total number of problems solved**
 
-  * Counts only **Accepted (OK)** submissions
-
-* 📊 **Difficulty-wise problem statistics**
+* 📊 ` **Difficulty-wise problem statistics** `
 
   * Organizes solved problems based on their difficulty levels (A, B, C, D, E, etc.)
 
