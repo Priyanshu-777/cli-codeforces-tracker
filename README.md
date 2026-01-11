@@ -17,7 +17,7 @@ Unlike web dashboards, this tool is designed for developers who prefer **termina
 
 * ✅ Calculates **total number of problems solved**
 
-* 📊 ` **Difficulty-wise problem statistics** `
+* 📊 **Difficulty-wise problem statistics** 
 
   * Organizes solved problems based on their difficulty levels (A, B, C, D, E, etc.)
 
@@ -249,7 +249,7 @@ This project works by interacting directly with the **official Codeforces Public
 
 * For complete and official API documentation, refer to:
 
-  🔗  ` **Codeforces API Documentation** `
+  🔗  **Codeforces API Documentation** 
   [https://codeforces.com/apiHelp](https://codeforces.com/apiHelp)
 
     This page lists:
