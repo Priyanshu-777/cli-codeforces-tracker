@@ -7,35 +7,50 @@ def get_user_info(handle):
     url = f"https://codeforces.com/api/user.info?handles={handle}"
     response = requests.get(url).json()
     #print(json.dumps(response, indent=4))
-    
-    user_info=response["result"][0]
 
-    print(f"\nHandle: {user_info['handle']}")
-    print(f"Avatar: {user_info['titlePhoto']}")
-    print(f"Rank: {user_info.get('rank', 'N/A')}")                           ## (print if ,else print)
-    print(f"Rating: {user_info.get('rating', 'Unrated')}")
-    print(f"Max Rating: {user_info.get("maxRating", "Unrated")}")  
-    print(f"Contribution: {user_info["contribution"]}\n")  
+    if(response["status"] != "OK"):
+        print("\n ERROR! \n")
+        return
+    
+    else:
+                
+        user_info=response["result"][0]
+
+        print(f"\nHandle: {user_info['handle']}")
+        print(f"Avatar: {user_info['titlePhoto']}")
+        print(f"Rank: {user_info.get('rank', 'N/A')}")                           ## (print if ,else print)
+        print(f"Rating: {user_info.get('rating', 'Unrated')}")
+        print(f"Max Rating: {user_info.get("maxRating", "Unrated")}")  
+        print(f"Contribution: {user_info["contribution"]}\n")  
                    
+
+        
     
 
 def get_user_submissions(handle):
+
     url =  f"https://codeforces.com/api/user.status?handle={handle}"
     response = requests.get(url).json()
     #print(json.dumps(response,indent=4))
 
-    submissions_list= response['result']
-    solved = set()
+    if(response["status"] != "OK"):
+        return
+    
+    else:
+        submissions_list= response['result']
+        solved = set()
 
-    for submission in submissions_list:
-        if submission['verdict']== "OK":        # solution accepted by cf
-            problem = submission['problem']
-            solved_problem_id = (problem.get("contestId"), problem.get("index"))
+        for submission in submissions_list:
+            if submission['verdict']== "OK":        # solution accepted by cf
+                problem = submission['problem']
+                solved_problem_id = (problem.get("contestId"), problem.get("index"))
 
-            solved.add(solved_problem_id)
+                solved.add(solved_problem_id)
 
-    print(f"Total Problem Solved: {len(solved)}\n")
-    problem_by_level(solved)
+        print(f"Total Problem Solved: {len(solved)}\n")
+        
+        if(len(solved)>0):
+            problem_by_level(solved)
 
     
 
@@ -52,16 +67,16 @@ def problem_by_level(solved):
         print(f"    {level}: {difficulty_count[level]}")
 
     print()
+
     
+def line():
+    print("="*90) 
 
 
 def header():
     line()
     print(pyfiglet.figlet_format("Codeforces Tracker"))
     line()
-
-def line():
-    print("="*90)   
 
 
 def main():
@@ -71,10 +86,11 @@ def main():
     
     get_user_info(handle)
     get_user_submissions(handle)
+    
     line()
     print("\n")
 
 
 
-
-main()
+if __name__ == "__main__":
+    main()
