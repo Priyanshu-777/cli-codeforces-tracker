@@ -12,8 +12,7 @@ def get_user_info(handle):
         print("\n ERROR! \n")
         return
     
-    else:
-                
+    else:  
         user_info=response["result"][0]
 
         print(f"\nHandle: {user_info['handle']}")
@@ -24,8 +23,6 @@ def get_user_info(handle):
         print(f"Contribution: {user_info["contribution"]}\n")  
                    
 
-        
-    
 
 def get_user_submissions(handle):
 
@@ -81,12 +78,9 @@ def header():
 
 def main():
     header()
-    
     handle= input("\nEnter codeforce handle: ")
-    
     get_user_info(handle)
     get_user_submissions(handle)
-    
     line()
     print("\n")
 
